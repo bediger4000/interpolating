@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -9,9 +10,18 @@ import (
 )
 
 func main() {
+
+	min := flag.Float64("min", 0.0, "minimum domain value")
+	max := flag.Float64("max", 10.0, "maximum domain value")
+	step := flag.Float64("step", 0.01, "domain delta value")
+	flag.Parse()
+
 	var x, y []float64
 
-	for _, str := range os.Args[1:] {
+	n := flag.NArg()
+
+	for i := 0; i < n; i++ {
+		str := flag.Arg(i)
 		fields := strings.Split(str, ",")
 		xi, err := strconv.ParseFloat(fields[0], 64)
 		if err != nil {
@@ -27,9 +37,17 @@ func main() {
 		y = append(y, yi)
 	}
 
-	for i := range x {
-		ycalc := poly(x, y, x[i])
-		fmt.Printf("at %f, calculated %f, wanted %f\n", x[i], ycalc, y[i])
+	for i, d := range x {
+		r := poly(x, y, d)
+		delta := y[i] - r
+		if delta > 0.001 {
+			fmt.Fprintf(os.Stderr, "%f wanted %f got %f (%f)\n", d, r, y[i], delta)
+		}
+	}
+
+	for r := *min; r <= *max; r += *step {
+		ycalc := poly(x, y, r)
+		fmt.Printf("%f\t%f\n", r, ycalc)
 	}
 }
 
