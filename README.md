@@ -2,7 +2,14 @@
 
 "Mathematics for Computer Programmers" chapter 2 Polynomials
 
-# Example
+That chapter present polynomials as an example
+mathematical object.
+It proves that you can construct a unique polynomial
+that passes through N points on the plane.
+
+This repo exists to prove to myself that I understand the ideas.
+
+## Example
 
 ```sh
 $ ./poly -min -10 -max 10  0,0 1,1 -1,1 > data
