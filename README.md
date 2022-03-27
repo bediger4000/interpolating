@@ -1,6 +1,7 @@
 # Interpolating Polynomials
 
-"Mathematics for Computer Programmers" chapter 2 Polynomials
+[Programmer's Introduction to Mathematics](https://pimbook.org/),
+chapter 2, "Polynomials".
 
 That chapter present polynomials as an example
 mathematical object.
