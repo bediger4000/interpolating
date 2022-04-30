@@ -30,3 +30,24 @@ a command like this:
 gnuplot> set xrange [-10:20]
 gnuplot> plot 'data' with lines, 'data2' with lines
 ```
+
+## Bonus Horner's Method Benchmarking
+
+[Code](horners.go)
+
+One of the exercises for Chapter 1 is to "look up Horner's method"
+and benchmark polynomial evaluation versus some other,
+more obvious method.
+
+My program evaluates a polynomial (coefficients given on the command line)
+
+```sh
+$ ./horners -.00001 0.0 -.0001 .053 12 12020.
+```
+
+would evalute a 5th-degree polynomial:
+
+-0.00001x<sup>5</sup> - 0.0001x<sup>3</sup> +.053x<sup>2</sup> + 12x + 12020
+
+The code contains constants for range of X, and delta-X
+so as to execute each method of polynomial evaluate a large number of times.
