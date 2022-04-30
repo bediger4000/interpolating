@@ -18,7 +18,7 @@ import (
 const (
 	FROM    = -50.
 	TO      = 50.
-	DELTA   = .01
+	DELTA   = .001
 	EPSILON = 0.00001
 )
 
